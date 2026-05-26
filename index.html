@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Douceur des Collines — Yaourts fermiers et crème crue, Saint-Santin, Aveyron</title>
+<meta name="description" content="GAEC Douceur des Collines. Yaourts fermiers nature et vanille, crème crue. Lait de notre troupeau, transformé à la ferme à Saint-Santin (Aveyron)." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Yellowtail&family=Pacifico&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <a href="index.html" class="brand brand-script">
+      <div class="brand-script-name">
+        <span class="brand-line">Douceur</span>
+        <span class="brand-line">des Collines</span>
+      </div>
+      <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="la-ferme.html">La Ferme</a>
+      <a href="nos-produits.html">Nos produits</a>
+      <a href="points-de-vente.html">Points de vente</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="btn btn-primary btn-small" href="professionnels.html">Professionnels</a>
+      <button class="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="m-menu">
+  <div class="m-menu-hdr">
+    <a href="index.html" class="brand brand-script">
+      <div class="brand-script-name">
+        <span class="brand-line">Douceur</span>
+        <span class="brand-line">des Collines</span>
+      </div>
+      <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+    </a>
+    <button class="m-menu-close" aria-label="Fermer">×</button>
+  </div>
+  <nav>
+    <a href="index.html" class="active">Accueil</a>
+    <a href="la-ferme.html">La Ferme</a>
+    <a href="nos-produits.html">Nos produits</a>
+    <a href="points-de-vente.html">Points de vente</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="m-menu-foot">
+    <a class="btn btn-primary" style="width: 100%;" href="professionnels.html">Espace Professionnels</a>
+    <div style="margin-top: 16px; font-size: 13px; color: var(--brown-soft);">
+      La Berbezie, 12300 Saint-Santin<br/>
+      <a href="tel:0565640683" style="color: var(--sage); font-weight: 600;">05 65 64 06 83</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/landscape-pasture.jpg" alt="Les collines aveyronnaises au lever du jour" />
+    </div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">GAEC de la Berbezie · Saint-Santin, Aveyron</div>
+      <h1 class="hero-title">Du lait à la cuillère, <em style="color: var(--vanille);">en Aveyron</em></h1>
+      <p class="hero-sub">Yaourts fermiers nature et vanille, crème crue thermoscellée. Lait de la traite du matin, transformé le jour même, sans conservateur.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="nos-produits.html">Découvrir nos produits</a>
+        <a class="btn btn-ghost" style="color: var(--cream); border-color: rgba(250,247,240,0.4);" href="points-de-vente.html">Où nous trouver →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHIFFRES ============ -->
+  <section class="section" style="padding-top: 80px; padding-bottom: 80px;">
+    <div class="container">
+      <div class="home-history-head">
+        <div class="home-history-eyebrow">
+          <span style="width: 28px; height: 1px; background: var(--sage); display: inline-block;"></span>
+          <div class="eyebrow">Notre histoire</div>
+        </div>
+        <h2 class="home-history-title">Une ferme familiale, quatre générations sur les mêmes prés</h2>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num"><em>4</em></div>
+          <div class="stat-tag">Générations</div>
+          <p class="stat-desc">Au même endroit, sur le plateau de Saint-Santin. Transformation laitière depuis 1994 avec Marie-José et Laurent Figeac.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-num">60</div>
+          <div class="stat-tag">Vaches prim'holstein</div>
+          <p class="stat-desc">Nées et élevées sur place, nourries sur une cinquantaine d'hectares. Pâturage extérieur du printemps à l'automne.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-num">160<span style="font-size: 24px; font-weight: 400;"> 000</span></div>
+          <div class="stat-tag">Litres de lait transformés / an</div>
+          <p class="stat-desc">Dans notre atelier agréé CEE, à quelques mètres de l'étable. Lait tiré le matin, en pot l'après-midi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUITS ============ -->
+  <section class="section" style="padding-top: 40px;">
+    <div class="container">
+      <div class="home-products-head">
+        <div>
+          <div class="eyebrow">Nos produits</div>
+          <h2 class="section-title">Trois pots. Le vrai goût du lait</h2>
+        </div>
+        <p class="home-products-lead">Lait entier de notre troupeau, ferments lactiques, et c'est tout · Conservation longue, sans conservateur · La fraîcheur du lait fait la qualité du produit</p>
+      </div>
+      <div class="products-grid">
+        <a class="product-card nature" href="nos-produits.html">
+          <div class="product-cup"><img src="assets/product-nature.jpg" alt="Yaourt fermier Nature" class="product-photo" /></div>
+          <div class="product-body">
+            <div class="product-eyebrow" style="font-size: 20px;">Yaourt fermier</div>
+            <h3 class="product-name" style="font-size: 30px;">Nature</h3>
+            <div class="product-tag">Pot de 125 g · Lait entier, ferments lactiques · Sans conservateur</div>
+            <div class="product-cta">Voir le produit →</div>
+          </div>
+        </a>
+        <a class="product-card vanille" href="nos-produits.html">
+          <div class="product-cup"><img src="assets/product-vanille.jpg" alt="Yaourt fermier Vanille" class="product-photo" /></div>
+          <div class="product-body">
+            <div class="product-eyebrow" style="font-size: 20px;">Yaourt fermier</div>
+            <h3 class="product-name" style="font-size: 30px;">Vanille</h3>
+            <div class="product-tag">Pot de 125 g · Sucre 7 % · Arôme vanille naturel · Sans conservateur</div>
+            <div class="product-cta">Voir le produit →</div>
+          </div>
+        </a>
+        <a class="product-card creme" href="nos-produits.html">
+          <div class="product-cup"><img src="assets/product-creme.jpg" alt="Crème crue Douceur des Collines" class="product-photo" /></div>
+          <div class="product-body">
+            <div class="product-eyebrow" style="font-size: 20px;">Crème crue</div>
+            <h3 class="product-name" style="font-size: 20px;">Non pasteurisée</h3>
+            <div class="product-tag">Pot de 20 cl · Thermoscellée</div>
+            <div class="product-cta">Voir le produit →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OÙ NOUS TROUVER ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="find-grid">
+        <div class="find-text">
+          <div class="eyebrow-dash">
+            <span class="dash"></span>
+            <div class="eyebrow">Où nous trouver</div>
+          </div>
+          <h2 class="find-title">
+            Toujours<br/>
+            <em>à portée de cuillère</em>
+          </h2>
+          <p class="find-desc">
+            Hypermarchés, épiceries fines, fromagers, marchés, ambulants. La carte interactive est mise à jour chaque saison.
+          </p>
+          <div class="find-stats">
+            <div class="find-stat">
+              <div class="find-stat-num">30<span>+</span></div>
+              <div class="find-stat-lbl">Points de vente</div>
+            </div>
+            <div class="find-stat">
+              <div class="find-stat-num">4</div>
+              <div class="find-stat-lbl">Départements</div>
+            </div>
+            <div class="find-stat">
+              <div class="find-stat-num">2</div>
+              <div class="find-stat-lbl">Marchés hebdo</div>
+            </div>
+          </div>
+        </div>
+        <div class="find-map">
+          <a class="find-map-frame find-map-clickable" href="points-de-vente.html" aria-label="Voir tous les points de vente">
+            <div id="home-map" class="osm-map"></div>
+            <div class="find-map-cta">Voir tous les points de vente&nbsp;→</div>
+          </a>
+          <div class="find-map-legend">
+            <span><span class="lg lg-farm"></span>Notre ferme</span>
+            <span><span class="lg lg-pos"></span>Points de vente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA PRO ============ -->
+  <section class="section" style="padding-top: 40px;">
+    <div class="container">
+      <div class="pro-cta">
+        <div class="pro-cta-eyebrow">
+          <span class="dash"></span>
+          <span>Professionnel</span>
+        </div>
+        <h2 class="pro-cta-title">
+          Vous êtes <em>épicier, restaurateur,<br/>collectivité</em>&nbsp;?
+        </h2>
+        <div class="pro-cta-bottom">
+          <p class="pro-cta-desc">
+            Travaillez avec un producteur local. En rayon, en cuisine, au menu des cantines. Produit tracé, conservation longue, référencés Agrilocal pour les collectivités&nbsp;· Nous revenons vers vous sous quelques jours.
+          </p>
+          <div class="pro-cta-actions">
+            <a class="btn btn-vanille" href="professionnels.html">Référencer nos produits&nbsp;→</a>
+            <a class="btn btn-ghost-dark" href="contact.html">Nous joindre</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS BAND ============ -->
+  <div class="clients-band">
+    <div class="clients-inner">
+      <div class="lbl">Ils nous font confiance</div>
+      <div class="clients-list">
+        <span class="client">— Halles de l'Aveyron —</span>
+        <span class="client">— Maison Ginisty —</span>
+        <span class="client">— Morin Fromager —</span>
+        <span class="client">— Intermarché —</span>
+        <span class="client">— L'Entre Deux —</span>
+        <span class="client">— Agrilocal —</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="brand brand-script brand-script-dark">
+        <div class="brand-script-name">
+          <span class="brand-line">Douceur</span>
+          <span class="brand-line">des Collines</span>
+        </div>
+        <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+      </a>
+      <p class="foot-blurb">
+        Yaourts fermiers et crème crue, fabriqués chaque jour à la ferme à Saint-Santin, au cœur de l'Aveyron. Lait de notre troupeau, transformation artisanale, sans conservateur.
+      </p>
+      <div class="foot-labels">
+        <span class="foot-label"><em>Bienvenue</em> à la Ferme</span>
+        <span class="foot-label">Agrilocal</span>
+        <span class="foot-label">Halles de l'Aveyron</span>
+      </div>
+    </div>
+    <div>
+      <h5>La ferme</h5>
+      <ul>
+        <li><a href="la-ferme.html">Notre histoire</a></li>
+        <li><a href="la-ferme.html">Nos vaches</a></li>
+        <li><a href="la-ferme.html">Nos engagements</a></li>
+        <li><a href="nos-produits.html">Nos produits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Trouver / Acheter</h5>
+      <ul>
+        <li><a href="points-de-vente.html">Tous les points de vente</a></li>
+        <li><a href="professionnels.html">Espace professionnels</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Coordonnées</h5>
+      <ul>
+        <li style="color: rgba(250,247,240,0.7); font-size: 14px;">
+          GAEC de la Berbezie<br/>
+          La Berbezie<br/>
+          12300 Saint-Santin
+        </li>
+        <li><a href="tel:0565640683">05 65 64 06 83</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© <span data-year></span> GAEC de la Berbezie — Douceur des Collines</div>
+    <div>Site réalisé avec ❤ par la famille · <a href="#" style="cursor: pointer;">Mentions légales</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="js/main.js"></script>
+</body>
+</html>

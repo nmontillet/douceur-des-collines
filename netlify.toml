@@ -1,0 +1,56 @@
+# Configuration Netlify pour douceurdescollines.fr
+# Site statique HTML/CSS/JS pur — pas de build step nécessaire.
+
+[build]
+  publish = "."
+
+# Headers de sécurité standards
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Cache long pour les assets immuables (photos, CSS, JS)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Redirection pour URLs sans .html (optionnel, plus joli)
+[[redirects]]
+  from = "/la-ferme"
+  to = "/la-ferme.html"
+  status = 200
+
+[[redirects]]
+  from = "/nos-produits"
+  to = "/nos-produits.html"
+  status = 200
+
+[[redirects]]
+  from = "/points-de-vente"
+  to = "/points-de-vente.html"
+  status = 200
+
+[[redirects]]
+  from = "/professionnels"
+  to = "/professionnels.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200

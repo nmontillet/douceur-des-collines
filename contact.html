@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Douceur des Collines</title>
+<meta name="description" content="GAEC de la Berbezie — La Berbezie, 12300 Saint-Santin. Téléphone, email, formulaire de contact." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Yellowtail&family=Pacifico&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <a href="index.html" class="brand brand-script">
+      <div class="brand-script-name"><span class="brand-line">Douceur</span><span class="brand-line">des Collines</span></div>
+      <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Accueil</a>
+      <a href="la-ferme.html">La Ferme</a>
+      <a href="nos-produits.html">Nos produits</a>
+      <a href="points-de-vente.html">Points de vente</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="btn btn-primary btn-small" href="professionnels.html">Professionnels</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="m-menu">
+  <div class="m-menu-hdr">
+    <a href="index.html" class="brand brand-script">
+      <div class="brand-script-name"><span class="brand-line">Douceur</span><span class="brand-line">des Collines</span></div>
+      <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+    </a>
+    <button class="m-menu-close" aria-label="Fermer">×</button>
+  </div>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="la-ferme.html">La Ferme</a>
+    <a href="nos-produits.html">Nos produits</a>
+    <a href="points-de-vente.html">Points de vente</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+  <div class="m-menu-foot">
+    <a class="btn btn-primary" style="width: 100%;" href="professionnels.html">Espace Professionnels</a>
+    <div style="margin-top: 16px; font-size: 13px; color: var(--brown-soft);">
+      La Berbezie, 12300 Saint-Santin<br/>
+      <a href="tel:0565640683" style="color: var(--sage); font-weight: 600;">05 65 64 06 83</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="section" style="padding-top: 80px;">
+    <div class="container">
+      <div class="eyebrow">Contact</div>
+      <h1 class="section-title" style="font-size: clamp(44px, 5.5vw, 72px);">Une question, une visite, un mot ?</h1>
+      <p class="section-lead">On répond à tout, par téléphone, par mail, ou directement sur place quand on n'a pas les mains occupées.</p>
+
+      <div class="contact-layout">
+        <div>
+          <div class="contact-info">
+            <div class="contact-info-row">
+              <div class="ic">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              </div>
+              <div>
+                <dt>Adresse</dt>
+                <dd>GAEC de la Berbezie<br/>La Berbezie, 12300 Saint-Santin (Aveyron)</dd>
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <div class="ic">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+              </div>
+              <div>
+                <dt>Téléphone</dt>
+                <dd><a href="tel:0565640683" style="color: var(--sage); font-weight: 600;">05 65 64 06 83</a></dd>
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <div class="ic ic-at">@</div>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:contact@douceurdescollines.fr" style="color: var(--sage); font-weight: 600;">contact@douceurdescollines.fr</a></dd>
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <div class="ic">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+              </div>
+              <div>
+                <dt>Joignables</dt>
+                <dd>Du lundi au vendredi, 9h–12h et 14h–18h. Le mieux : un mail, on rappelle.</dd>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-pro-aside">
+            <div class="lbl">Vous êtes professionnel ?</div>
+            <div class="desc">Utilisez plutôt notre formulaire dédié — on revient plus vite.</div>
+            <a class="btn btn-primary btn-small" style="margin-top: 14px;" href="professionnels.html">Espace Professionnels →</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-card">
+            <div id="contact-form-wrapper" data-form-wrapper>
+              <h3 style="font-size: 24px; margin-bottom: 18px;">Nous écrire</h3>
+              <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-success="contact-form-success">
+                <input type="hidden" name="form-name" value="contact" />
+                <p style="display: none;"><label>Ne pas remplir : <input name="bot-field" /></label></p>
+
+                <div class="field">
+                  <label for="c-nom">Votre nom</label>
+                  <input id="c-nom" name="nom" type="text" required />
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label for="c-email">Email</label>
+                    <input id="c-email" name="email" type="email" required />
+                  </div>
+                  <div class="field">
+                    <label for="c-tel">Téléphone (facultatif)</label>
+                    <input id="c-tel" name="telephone" type="tel" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="c-message">Message</label>
+                  <textarea id="c-message" name="message" required placeholder="Dites-nous tout…"></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">Envoyer le message</button>
+              </form>
+            </div>
+            <div id="contact-form-success" class="form-success" style="display: none;">
+              <div class="check">✓</div>
+              <h3>Merci, message reçu !</h3>
+              <p style="margin-top: 10px;">On vous répond dès que possible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div style="background: var(--cream-2); border-radius: 20px; min-height: 380px; overflow: hidden; position: relative;">
+        <div id="contact-map" class="osm-map" style="min-height: 380px;"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="brand brand-script brand-script-dark">
+        <div class="brand-script-name"><span class="brand-line">Douceur</span><span class="brand-line">des Collines</span></div>
+        <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+      </a>
+      <p class="foot-blurb">Yaourts fermiers et crème crue, fabriqués chaque jour à la ferme à Saint-Santin, au cœur de l'Aveyron. Lait de notre troupeau, transformation artisanale, sans conservateur.</p>
+      <div class="foot-labels">
+        <span class="foot-label"><em>Bienvenue</em> à la Ferme</span>
+        <span class="foot-label">Agrilocal</span>
+        <span class="foot-label">Halles de l'Aveyron</span>
+      </div>
+    </div>
+    <div>
+      <h5>La ferme</h5>
+      <ul>
+        <li><a href="la-ferme.html">Notre histoire</a></li>
+        <li><a href="la-ferme.html">Nos vaches</a></li>
+        <li><a href="la-ferme.html">Nos engagements</a></li>
+        <li><a href="nos-produits.html">Nos produits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Trouver / Acheter</h5>
+      <ul>
+        <li><a href="points-de-vente.html">Tous les points de vente</a></li>
+        <li><a href="professionnels.html">Espace professionnels</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Coordonnées</h5>
+      <ul>
+        <li style="color: rgba(250,247,240,0.7); font-size: 14px;">
+          GAEC de la Berbezie<br/>La Berbezie<br/>12300 Saint-Santin
+        </li>
+        <li><a href="tel:0565640683">05 65 64 06 83</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© <span data-year></span> GAEC de la Berbezie — Douceur des Collines</div>
+    <div>Site réalisé avec ❤ par la famille · <a href="#" style="cursor: pointer;">Mentions légales</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="js/main.js"></script>
+</body>
+</html>

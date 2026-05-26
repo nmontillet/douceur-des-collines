@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>La Ferme — Douceur des Collines, Saint-Santin, Aveyron</title>
+<meta name="description" content="GAEC de la Berbezie, quatre générations à Saint-Santin (Aveyron). 60 prim'holstein, ~50 hectares, atelier agréé CEE." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Yellowtail&family=Pacifico&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <a href="index.html" class="brand brand-script">
+      <div class="brand-script-name">
+        <span class="brand-line">Douceur</span>
+        <span class="brand-line">des Collines</span>
+      </div>
+      <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Accueil</a>
+      <a href="la-ferme.html" class="active">La Ferme</a>
+      <a href="nos-produits.html">Nos produits</a>
+      <a href="points-de-vente.html">Points de vente</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="btn btn-primary btn-small" href="professionnels.html">Professionnels</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="m-menu">
+  <div class="m-menu-hdr">
+    <a href="index.html" class="brand brand-script">
+      <div class="brand-script-name"><span class="brand-line">Douceur</span><span class="brand-line">des Collines</span></div>
+      <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+    </a>
+    <button class="m-menu-close" aria-label="Fermer">×</button>
+  </div>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="la-ferme.html" class="active">La Ferme</a>
+    <a href="nos-produits.html">Nos produits</a>
+    <a href="points-de-vente.html">Points de vente</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="m-menu-foot">
+    <a class="btn btn-primary" style="width: 100%;" href="professionnels.html">Espace Professionnels</a>
+    <div style="margin-top: 16px; font-size: 13px; color: var(--brown-soft);">
+      La Berbezie, 12300 Saint-Santin<br/>
+      <a href="tel:0565640683" style="color: var(--sage); font-weight: 600;">05 65 64 06 83</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="hero hero-page hero-ferme-intro">
+    <div class="hero-bg"><img src="assets/aerial-cows.jpg" alt="Vue aérienne du troupeau au pré" /></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="ferme-eyebrow"><span class="ferme-eyebrow-line"></span>La Berbezie · 12300 Saint-Santin</div>
+      <h1 class="ferme-display">Quatre générations<br/>sur les <em>mêmes prés</em></h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="story-row">
+        <div class="story-text">
+          <div class="eyebrow">Notre histoire</div>
+          <h3>Une exploitation, un atelier, une famille</h3>
+          <p>La famille Figeac travaille la terre de la Berbezie depuis quatre générations. C'est en 1994 que la transformation laitière démarre à la ferme : Marie-José et Laurent Figeac construisent un atelier agréé CEE pour proposer directement aux gourmets des yaourts et de la crème issus de leur propre troupeau.</p>
+          <p>Trente ans plus tard, la formule n'a pas changé. La traite du matin part directement à l'atelier voisin, le lait est ensemencé, mis en pots, scellé, étiqueté — sans poudre ajoutée pour épaissir, sans conservateur pour faire durer.</p>
+        </div>
+        <div class="story-media">
+          <img src="assets/cow-portrait.jpg" alt="Une vache prim'holstein dans la stabulation" />
+        </div>
+      </div>
+
+      <div class="story-row reverse">
+        <div class="story-text">
+          <div class="eyebrow">Nos vaches</div>
+          <h3>Des prim'holstein nées et élevées sur place</h3>
+          <p>Le troupeau compte une soixantaine de vaches laitières prim'holstein, toutes nées et élevées sur l'exploitation. Du printemps à l'automne, elles pâturent les prairies qui entourent la ferme.</p>
+          <p>L'hiver venu, elles reviennent en stabulation libre, sur paille, avec accès permanent à l'eau et à l'auge comprenant ration sèche de foin et céréales de l'exploitation. Brosses rotatives, ventilation naturelle : le bien-être d'un troupeau qu'on connaît une à une.</p>
+        </div>
+        <div class="story-media wide">
+          <img src="assets/production-tank.jpg" alt="Tank de réception du lait à l'atelier" />
+          <div class="story-stats">
+            <div class="story-stat">
+              <div class="story-stat-num">60</div>
+              <div class="story-stat-label">Vaches en lactation</div>
+            </div>
+            <div class="story-stat">
+              <div class="story-stat-num">~50 ha</div>
+              <div class="story-stat-label">de prairies &amp; céréales</div>
+            </div>
+            <div class="story-stat">
+              <div class="story-stat-num">100%</div>
+              <div class="story-stat-label">nées sur place</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-row no-divider">
+        <div class="story-text">
+          <div class="eyebrow">Nos engagements</div>
+          <h3>Circuit court, vraiment.</h3>
+          <p>Du tank de stockage au pot fini, le lait ne quitte pas l'exploitation. Cette maîtrise complète, c'est la garantie d'un produit tracé, d'une qualité régulière, et d'un goût qu'on reconnaît. Notre atelier est agréé CEE. C'est la garantie sanitaire la plus exigeante pour la transformation laitière en France. Nous transformons environ 160 000 litres par an.</p>
+        </div>
+        <div class="story-media">
+          <img src="assets/couple-products.jpg" alt="Marie-José et Laurent Figeac présentent leurs yaourts et crème devant la stabulation" style="object-position: center center; object-fit: cover; aspect-ratio: 4 / 3;" />
+        </div>
+      </div>
+
+      <ul class="commit-list commit-list-full">
+        <li>
+          <h4>Atelier agréé CEE</h4>
+          <p>Norme sanitaire européenne, contrôles réguliers, traçabilité de la traite au pot.</p>
+        </li>
+        <li>
+          <h4>Lait du jour</h4>
+          <p>La traite du matin est transformée avant la nuit. Fraîcheur maximale, sans conservateur.</p>
+        </li>
+        <li>
+          <h4>Bien-être animal</h4>
+          <p>Pâturage du printemps à l'automne. Troupeau volontairement contenu.</p>
+        </li>
+        <li>
+          <h4>Circuit court</h4>
+          <p>Distribution directe : épiceries, fromagers, supermarchés régionaux, Halles de l'Aveyron.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 80px;">
+    <div class="container">
+      <div class="find-us">
+        <div class="eyebrow">Nous trouver</div>
+        <h2 class="find-us-title">GAEC de la Berbezie<br/>La Berbezie · 12300 Saint-Santin</h2>
+        <p class="find-us-meta">Coordonnées approx. 44.65° N, 2.22° E · à 25 min de Figeac, 20 min de Maurs, 1h de Rodez.</p>
+        <a class="find-us-link" href="https://www.google.com/maps/search/?api=1&query=Saint-Santin+12300+Aveyron" target="_blank" rel="noopener">Ouvrir dans Google Maps <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <a href="index.html" class="brand brand-script brand-script-dark">
+        <div class="brand-script-name"><span class="brand-line">Douceur</span><span class="brand-line">des Collines</span></div>
+        <small class="brand-tagline">GAEC de la Berbezie — 1994</small>
+      </a>
+      <p class="foot-blurb">Yaourts fermiers et crème crue, fabriqués chaque jour à la ferme à Saint-Santin, au cœur de l'Aveyron. Lait de notre troupeau, transformation artisanale, sans conservateur.</p>
+      <div class="foot-labels">
+        <span class="foot-label"><em>Bienvenue</em> à la Ferme</span>
+        <span class="foot-label">Agrilocal</span>
+        <span class="foot-label">Halles de l'Aveyron</span>
+      </div>
+    </div>
+    <div>
+      <h5>La ferme</h5>
+      <ul>
+        <li><a href="la-ferme.html">Notre histoire</a></li>
+        <li><a href="la-ferme.html">Nos vaches</a></li>
+        <li><a href="la-ferme.html">Nos engagements</a></li>
+        <li><a href="nos-produits.html">Nos produits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Trouver / Acheter</h5>
+      <ul>
+        <li><a href="points-de-vente.html">Tous les points de vente</a></li>
+        <li><a href="professionnels.html">Espace professionnels</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Coordonnées</h5>
+      <ul>
+        <li style="color: rgba(250,247,240,0.7); font-size: 14px;">
+          GAEC de la Berbezie<br/>La Berbezie<br/>12300 Saint-Santin
+        </li>
+        <li><a href="tel:0565640683">05 65 64 06 83</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© <span data-year></span> GAEC de la Berbezie — Douceur des Collines</div>
+    <div>Site réalisé avec ❤ par la famille · <a href="#" style="cursor: pointer;">Mentions légales</a></div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="js/main.js"></script>
+</body>
+</html>
