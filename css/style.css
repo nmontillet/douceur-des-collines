@@ -633,3 +633,50 @@ h1,h2,h3,h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-
   .near-combo { flex: 1 1 100%; }
   .near-input { min-width: 0; }
 }
+
+/* =====================================================================
+   LOGO — pastille "D" + wordmark serif (remplace le cursif a ombre jaune)
+   ===================================================================== */
+.brand-script {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 13px;
+  align-items: center;
+  padding: 2px 0;
+}
+.brand-script::before {
+  content: "D";
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--cream);
+  display: grid; place-items: center;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 25px; font-weight: 600; line-height: 1;
+}
+.brand-script-name {
+  grid-column: 2; grid-row: 1;
+  font-family: 'Fraunces', Georgia, serif !important;
+  font-weight: 500;
+  line-height: 1.0;
+}
+.brand-script-name .brand-line {
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  text-shadow: none !important;
+  padding-bottom: 0;
+}
+.brand-script-name .brand-line:nth-child(2) { padding-left: 0; }
+.brand-script .brand-tagline { grid-column: 2; grid-row: 2; margin-top: 4px; }
+/* Variante pied de page (fond sombre) */
+.brand-script-dark::before { background: var(--cream); color: var(--brown); }
+.brand-script-dark .brand-script-name .brand-line { text-shadow: none !important; }
+
+/* =====================================================================
+   Z-INDEX — carte et CTA de l'accueil passent SOUS le menu fixe au scroll
+   ===================================================================== */
+.find-map-frame { position: relative; z-index: 0; isolation: isolate; }
+.osm-map { isolation: isolate; }
