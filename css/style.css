@@ -220,6 +220,7 @@ h1,h2,h3,h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-
 .story-row:last-child { border-bottom: none; }
 .story-row.reverse .story-text { order: 2; }
 .story-row.reverse .story-media { order: 1; }
+.story-row.reverse { align-items: center; } /* centre verticalement photo + chiffres face au texte plus haut */
 .story-text h3 { font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1; margin: 14px 0 24px; }
 .story-text p { color: var(--brown-soft); margin-bottom: 16px; font-size: 17px; }
 .story-media img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; }
