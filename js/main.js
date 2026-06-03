@@ -25,6 +25,22 @@ const POS_DATA = [
   { id: "marche-decazeville",  kind: "marche", dept: "12", name: "Marché de Decazeville",  shortName: "Decazeville", town: "Decazeville",  addr: "Place Wilson, 12300 Decazeville", phone: "—", hours: "Mar. matin", prods: "Gamme complète",     lat: 44.55999, lng: 2.25128 },
 ];
 
+/* ----- Noms de villes francais poses sur la carte (le fond est sans etiquettes) ----- */
+const PLACE_LABELS = [
+  { name: "Aurillac", lat: 44.9261, lng: 2.4444 },
+  { name: "Figeac", lat: 44.6089, lng: 2.0319 },
+  { name: "Rodez", lat: 44.3506, lng: 2.5731 },
+  { name: "Decazeville", lat: 44.5636, lng: 2.2497 },
+  { name: "Villefranche-de-Rouergue", lat: 44.3520, lng: 2.0344 },
+  { name: "Maurs", lat: 44.7089, lng: 2.1986 },
+  { name: "Capdenac-Gare", lat: 44.5752, lng: 2.0780 },
+  { name: "Conques", lat: 44.5980, lng: 2.3995 },
+  { name: "Entraygues-sur-Truyère", lat: 44.6452, lng: 2.5663 },
+  { name: "Marcillac-Vallon", lat: 44.4752, lng: 2.4664 },
+  { name: "Aubin", lat: 44.5288, lng: 2.2436 },
+  { name: "Montbazens", lat: 44.4744, lng: 2.2386 },
+];
+
 const CAT_META = {
   super:    { label: "Hypermarché / Supermarché", dotColor: "var(--sage)",   chipDot: "var(--sage)" },
   epicerie: { label: "Épicerie / Fromager",       dotColor: "var(--nature)", chipDot: "var(--nature)" },
@@ -100,10 +116,11 @@ function createLeafletMap(container, options) {
     keyboard: false,
   }).setView(initialCenter, zoom);
 
-  // Tuiles OpenStreetMap France : libellés français à tous les niveaux de zoom
-  // (le relief est aplati en crème via le filtre CSS sur .leaflet-tile-pane).
-  L.tileLayer("https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png", {
-    subdomains: "abc",
+  // Fond de carte épuré CartoDB Positron : pas de relief, pas de noms/numéros
+  // de routes, juste de fines lignes et l'eau. Les noms de villes français sont
+  // posés manuellement (PLACE_LABELS) pour un rendu propre, constant et on-brand.
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+    subdomains: "abcd",
     maxZoom: 20,
   }).addTo(map);
 
@@ -130,6 +147,17 @@ function createLeafletMap(container, options) {
     const marker = L.marker([p.lat, p.lng], { icon }).addTo(map);
     if (onSelect) marker.on("click", () => onSelect(p.id));
     markers[p.id] = { marker, kind: p.kind };
+  });
+
+  // Noms de villes français posés manuellement (fond de carte sans étiquettes)
+  PLACE_LABELS.forEach((pl) => {
+    const icon = L.divIcon({
+      className: "osm-place",
+      html: '<span class="pl">' + pl.name + '</span>',
+      iconSize: [0, 0],
+      iconAnchor: [0, 0],
+    });
+    L.marker([pl.lat, pl.lng], { icon, interactive: false, keyboard: false, zIndexOffset: -1000 }).addTo(map);
   });
 
   // Auto-fit bounds : on cadre le cluster régional (sud-ouest) pour éviter que
