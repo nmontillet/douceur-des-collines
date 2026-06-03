@@ -32,6 +32,16 @@ const CAT_META = {
   marche:   { label: "Marché / Ambulant",         dotColor: "var(--brown)",  chipDot: "var(--brown)" }
 };
 
+/* ----- Distance haversine (km) entre deux paires [lat, lng] ----- */
+function haversineKm(a, b) {
+  const R = 6371;
+  const dLat = (b[0] - a[0]) * Math.PI / 180;
+  const dLng = (b[1] - a[1]) * Math.PI / 180;
+  const la1 = a[0] * Math.PI / 180, la2 = b[0] * Math.PI / 180;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(la1) * Math.cos(la2) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
 /* ----- Header scroll ----- */
 function initHeaderScroll() {
   const hdr = document.querySelector(".hdr");
@@ -331,10 +341,225 @@ function initPointsDeVente() {
     if (emptyEl) emptyEl.style.display = list.length === 0 ? "" : "none";
   }
 
+  // ----- Finder "le plus proche de chez vous" -----
+  (function initNearFinder() {
+    const finder = document.querySelector(".near-finder");
+    if (!finder) return;
+    const input = document.getElementById("near-input");
+    const sugBox = document.getElementById("near-suggest");
+    const form = document.getElementById("near-form");
+    const gpsBtn = document.getElementById("near-gps");
+    const statusEl = document.getElementById("near-status");
+    const resultsEl = document.getElementById("near-results");
+    if (!input || !form) return;
+
+    let suggestions = [];
+    let sugActive = -1;
+    let userLoc = null;
+    let debounce = null;
+    let skipFetch = false;
+
+    function setStatus(msg, isErr) {
+      if (!statusEl) return;
+      statusEl.textContent = msg || "";
+      statusEl.style.display = msg ? "" : "none";
+      statusEl.classList.toggle("near-status-err", !!isErr);
+    }
+
+    function renderSuggestions() {
+      if (!sugBox) return;
+      if (!suggestions.length) { sugBox.style.display = "none"; sugBox.innerHTML = ""; return; }
+      sugBox.style.display = "";
+      sugBox.innerHTML = suggestions.map((s, i) =>
+        '<li role="option" class="near-sug' + (i === sugActive ? " is-active" : "") + '" data-i="' + i + '">' +
+        '<svg viewBox="0 0 18 18" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" class="near-sug-pin"><path d="M9 16s6-5.2 6-9.5A6 6 0 0 0 3 6.5C3 10.8 9 16 9 16Z"/><circle cx="9" cy="6.5" r="2"/></svg>' +
+        '<span class="near-sug-city">' + s.label + '</span>' +
+        '<span class="near-sug-cp">' + (s.postcode || "") + '</span></li>').join("");
+      sugBox.querySelectorAll(".near-sug").forEach(li => {
+        li.addEventListener("mousedown", (e) => { e.preventDefault(); pickSuggestion(suggestions[+li.dataset.i]); });
+        li.addEventListener("mouseenter", () => { sugActive = +li.dataset.i; });
+      });
+    }
+
+    async function fetchSuggestions(q) {
+      try {
+        const url = "https://api-adresse.data.gouv.fr/search/?limit=6&type=municipality&q=" + encodeURIComponent(q);
+        const r = await fetch(url);
+        const j = await r.json();
+        suggestions = (j.features || []).map(f => ({
+          label: f.properties.city || f.properties.name,
+          postcode: f.properties.postcode,
+          lat: f.geometry.coordinates[1],
+          lng: f.geometry.coordinates[0],
+        }));
+        sugActive = -1;
+        renderSuggestions();
+      } catch (e) { suggestions = []; renderSuggestions(); }
+    }
+
+    function pickSuggestion(s) {
+      if (!s) return;
+      skipFetch = true;
+      input.value = s.postcode ? (s.label + " (" + s.postcode + ")") : s.label;
+      userLoc = { lat: s.lat, lng: s.lng, label: s.label };
+      suggestions = []; renderSuggestions();
+      setStatus("");
+      renderNearest();
+    }
+
+    input.addEventListener("input", () => {
+      if (skipFetch) { skipFetch = false; return; }
+      const q = input.value.trim();
+      clearTimeout(debounce);
+      if (q.length < 2) { suggestions = []; renderSuggestions(); return; }
+      debounce = setTimeout(() => fetchSuggestions(q), 220);
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (!suggestions.length) return;
+      if (e.key === "ArrowDown") { e.preventDefault(); sugActive = Math.min(sugActive + 1, suggestions.length - 1); renderSuggestions(); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); sugActive = Math.max(sugActive - 1, 0); renderSuggestions(); }
+      else if (e.key === "Enter" && sugActive >= 0) { e.preventDefault(); pickSuggestion(suggestions[sugActive]); }
+      else if (e.key === "Escape") { suggestions = []; renderSuggestions(); }
+    });
+
+    document.addEventListener("mousedown", (e) => {
+      if (!finder.contains(e.target)) { suggestions = []; renderSuggestions(); }
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (sugActive >= 0 && suggestions[sugActive]) { pickSuggestion(suggestions[sugActive]); return; }
+      if (suggestions.length) { pickSuggestion(suggestions[0]); return; }
+      const q = input.value.trim();
+      if (!q) return;
+      setStatus("Recherche en cours…");
+      try {
+        const url = "https://api-adresse.data.gouv.fr/search/?limit=1&q=" + encodeURIComponent(q);
+        const r = await fetch(url);
+        const j = await r.json();
+        const f = (j.features || [])[0];
+        if (!f) { setStatus("Localisation impossible. Vérifiez l'orthographe.", true); return; }
+        userLoc = { lat: f.geometry.coordinates[1], lng: f.geometry.coordinates[0], label: f.properties.city || f.properties.label };
+        setStatus("");
+        renderNearest();
+      } catch (err) { setStatus("Localisation impossible. Réessayez.", true); }
+    });
+
+    if (gpsBtn) {
+      gpsBtn.addEventListener("click", () => {
+        if (!navigator.geolocation) { setStatus("Géolocalisation non disponible.", true); return; }
+        setStatus("Recherche en cours…");
+        suggestions = []; renderSuggestions();
+        navigator.geolocation.getCurrentPosition(
+          (pos) => { skipFetch = true; input.value = ""; userLoc = { lat: pos.coords.latitude, lng: pos.coords.longitude, label: "Ma position" }; setStatus(""); renderNearest(); },
+          () => setStatus("Localisation impossible. Autorisez la géolocalisation.", true),
+          { enableHighAccuracy: true, timeout: 8000 }
+        );
+      });
+    }
+
+    function renderNearest() {
+      if (!resultsEl || !userLoc) return;
+      const nearest = POS_DATA
+        .filter(p => p.lat && p.lng)
+        .map(p => Object.assign({}, p, { dist: haversineKm([userLoc.lat, userLoc.lng], [p.lat, p.lng]) }))
+        .sort((a, b) => a.dist - b.dist)
+        .slice(0, 3);
+      resultsEl.style.display = "";
+      resultsEl.innerHTML =
+        '<div class="near-results-head"><span>Depuis <strong>' + userLoc.label + '</strong></span>' +
+        '<button type="button" class="near-clear">Effacer ×</button></div>' +
+        '<div class="near-cards">' +
+        nearest.map((p, i) => {
+          const meta = CAT_META[p.kind];
+          const border = p.kind === "halles" ? "border: 1.5px solid var(--brown);" : "";
+          const dist = p.dist < 1 ? Math.round(p.dist * 1000) + " m" : p.dist.toFixed(1).replace(".", ",") + " km";
+          return '<button type="button" class="near-card' + (state.selectedId === p.id ? " is-active" : "") + '" data-id="' + p.id + '">' +
+            (i === 0 ? '<span class="near-badge">Le plus proche</span>' : "") +
+            '<span class="near-dist">' + dist + '</span>' +
+            '<span class="near-card-name"><span class="cat-dot" style="background:' + meta.dotColor + ';' + border + '"></span>' + p.name + '</span>' +
+            '<span class="near-card-town">' + p.addr + '</span></button>';
+        }).join("") + '</div>';
+      resultsEl.querySelector(".near-clear").addEventListener("click", () => {
+        skipFetch = true; userLoc = null; input.value = ""; setStatus(""); resultsEl.style.display = "none"; resultsEl.innerHTML = "";
+      });
+      resultsEl.querySelectorAll(".near-card").forEach(card => {
+        card.addEventListener("click", () => {
+          const id = card.dataset.id;
+          state.selectedId = id;
+          renderDetail();
+          refreshMarkerClasses();
+          panTo(id);
+          resultsEl.querySelectorAll(".near-card").forEach(c => c.classList.toggle("is-active", c.dataset.id === id));
+          const stage = document.querySelector(".map-stage");
+          if (stage) stage.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+    }
+  })();
+
   // Init
   renderDetail();
   renderTable();
   refreshMarkerClasses();
+}
+
+/* ----- Carrousel d'avis (page Professionnels) ----- */
+function initProReviews() {
+  const carousel = document.getElementById("pro-reviews");
+  if (!carousel) return;
+  const track = carousel.querySelector(".testi-track");
+  const controls = carousel.querySelector(".testi-controls");
+  const dotsWrap = carousel.querySelector(".testi-dots");
+  const arrows = carousel.querySelectorAll(".testi-arrow");
+  if (!track) return;
+
+  let pages = 1, index = 0, paused = false;
+
+  function syncDots() {
+    if (!dotsWrap) return;
+    dotsWrap.querySelectorAll(".testi-dot").forEach((d, i) => d.classList.toggle("is-active", i === index));
+  }
+  function goTo(i) {
+    index = (i + pages) % pages;
+    track.scrollTo({ left: index * track.clientWidth, behavior: "smooth" });
+    syncDots();
+  }
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    for (let i = 0; i < pages; i++) {
+      const b = document.createElement("button");
+      b.className = "testi-dot" + (i === index ? " is-active" : "");
+      b.setAttribute("aria-label", "Page d'avis " + (i + 1));
+      b.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(b);
+    }
+  }
+  function measure() {
+    pages = Math.max(1, Math.round(track.scrollWidth / track.clientWidth));
+    if (index > pages - 1) index = pages - 1;
+    buildDots();
+    if (controls) controls.style.display = pages > 1 ? "" : "none";
+  }
+
+  track.addEventListener("scroll", () => {
+    index = Math.round(track.scrollLeft / track.clientWidth);
+    syncDots();
+  });
+  arrows.forEach(a => a.addEventListener("click", () => goTo(index + Number(a.dataset.dir))));
+  carousel.addEventListener("mouseenter", () => { paused = true; });
+  carousel.addEventListener("mouseleave", () => { paused = false; });
+  carousel.addEventListener("touchstart", () => { paused = true; }, { passive: true });
+
+  setInterval(() => {
+    if (paused || pages <= 1 || document.hidden) return;
+    goTo(index + 1);
+  }, 6000);
+
+  measure();
+  window.addEventListener("resize", measure);
 }
 
 /* ----- Formulaires : confirmation visuelle après envoi (Netlify Forms gère le POST) ----- */
@@ -366,5 +591,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initHomeMap();
   initContactMap();
   initPointsDeVente();
+  initProReviews();
   initForms();
 });

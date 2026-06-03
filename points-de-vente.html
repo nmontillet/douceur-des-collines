@@ -66,7 +66,7 @@
         <span>Points de vente</span>
       </div>
       <div class="eyebrow page-intro-eyebrow">12 points de vente · 4 départements</div>
-      <h1 class="page-intro-display">Où nous <em>trouver</em>.</h1>
+      <h1 class="page-intro-display">Où nous <em>trouver</em> ?</h1>
       <p class="page-intro-lede">De Saint-Santin à Issy-les-Moulineaux, en passant par Maurs, Figeac, Decazeville et Rodez. Cliquez les pastilles, filtrez par catégorie, ou parcourez la liste.</p>
     </div>
   </section>
@@ -99,6 +99,31 @@
           Marchés &amp; ambulants
           <span class="chip-count">2</span>
         </button>
+      </div>
+
+      <div class="near-finder">
+        <div class="near-head">
+          <div>
+            <div class="eyebrow">Le plus proche de chez vous</div>
+            <h2 class="near-title">Entrez votre ville ou code postal</h2>
+          </div>
+          <form class="near-controls" id="near-form" autocomplete="off">
+            <div class="near-combo">
+              <label class="near-input">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 16s6-5.2 6-9.5A6 6 0 0 0 3 6.5C3 10.8 9 16 9 16Z"/><circle cx="9" cy="6.5" r="2"/></svg>
+                <input id="near-input" type="text" placeholder="Ex. Rodez, 12000, Figeac…" aria-label="Votre ville ou code postal" autocomplete="off" role="combobox" aria-autocomplete="list" />
+              </label>
+              <ul id="near-suggest" class="near-suggest" role="listbox" style="display: none;"></ul>
+            </div>
+            <button type="submit" class="btn btn-dark near-go">Rechercher</button>
+            <button type="button" id="near-gps" class="btn btn-ghost near-gps" title="Utiliser ma position">
+              <svg viewBox="0 0 18 18" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="3"/><path d="M9 1v2.5M9 14.5V17M1 9h2.5M14.5 9H17"/></svg>
+              Me localiser
+            </button>
+          </form>
+        </div>
+        <p id="near-status" class="near-status" style="display: none;"></p>
+        <div id="near-results" class="near-results" style="display: none;"></div>
       </div>
 
       <div class="map-stage">
