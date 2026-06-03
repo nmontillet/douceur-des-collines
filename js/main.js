@@ -4,25 +4,25 @@
    ===================================================================== */
 
 /* ----- Données partagées (points de vente) ----- */
-const FARM_LATLNG = [44.6770, 2.2330];
+const FARM_LATLNG = [44.64656, 2.22974]; // La Berbezie, Saint-Santin (12300) — géocodé OSM
 
 const POS_DATA = [
   // Supermarchés
-  { id: "im-maurs",    kind: "super",    dept: "15", name: "Intermarché SUPER Saint-Étienne-de-Maurs", shortName: "Maurs",     town: "Saint-Étienne-de-Maurs", addr: "8 Av. d'Aurillac, 15600 Saint-Étienne-de-Maurs",        phone: "04 71 49 02 11", hours: "Lun–Sam 8h30–19h30", prods: "Yaourts nature & vanille", lat: 44.7137, lng: 2.1898 },
-  { id: "im-flagnac",  kind: "super",    dept: "12", name: "Intermarché SUPER Flagnac",                shortName: "Flagnac",   town: "Flagnac",                addr: "RD 963 Lieu-dit La Planque, 12300 Flagnac",              phone: "05 65 64 88 04", hours: "Lun–Sam 8h30–19h30", prods: "Gamme complète",            lat: 44.5856, lng: 2.2789 },
-  { id: "im-bagnac",   kind: "super",    dept: "46", name: "Intermarché CONTACT Bagnac-sur-Célé",      shortName: "Bagnac",    town: "Bagnac-sur-Célé",        addr: "Près de Blazy, Route d'Aurillac, 46270 Bagnac-sur-Célé", phone: "05 65 14 01 21", hours: "Lun–Sam 8h30–19h30", prods: "Yaourts nature & vanille", lat: 44.6738, lng: 2.1602 },
-  { id: "im-figeac",   kind: "super",    dept: "46", name: "Intermarché SUPER Figeac",                 shortName: "Figeac",    town: "Figeac",                 addr: "15 Saint-Georges, Route de Cahors, 46100 Figeac",        phone: "05 65 50 02 14", hours: "Lun–Sam 8h30–20h",   prods: "Gamme complète",            lat: 44.6076, lng: 2.0344 },
+  { id: "im-maurs",    kind: "super",    dept: "15", name: "Intermarché SUPER Saint-Étienne-de-Maurs", shortName: "Maurs",     town: "Saint-Étienne-de-Maurs", addr: "8 Av. d'Aurillac, 15600 Saint-Étienne-de-Maurs",        phone: "04 71 49 02 11", hours: "Lun–Sam 8h30–19h30", prods: "Yaourts nature & vanille", lat: 44.71417, lng: 2.20157 },
+  { id: "im-flagnac",  kind: "super",    dept: "12", name: "Intermarché SUPER Flagnac",                shortName: "Flagnac",   town: "Flagnac",                addr: "RD 963 Lieu-dit La Planque, 12300 Flagnac",              phone: "05 65 64 88 04", hours: "Lun–Sam 8h30–19h30", prods: "Gamme complète",            lat: 44.60394, lng: 2.24306 },
+  { id: "im-bagnac",   kind: "super",    dept: "46", name: "Intermarché CONTACT Bagnac-sur-Célé",      shortName: "Bagnac",    town: "Bagnac-sur-Célé",        addr: "Près de Blazy, Route d'Aurillac, 46270 Bagnac-sur-Célé", phone: "05 65 14 01 21", hours: "Lun–Sam 8h30–19h30", prods: "Yaourts nature & vanille", lat: 44.67010, lng: 2.16574 },
+  { id: "im-figeac",   kind: "super",    dept: "46", name: "Intermarché SUPER Figeac",                 shortName: "Figeac",    town: "Figeac",                 addr: "15 Saint-Georges, Route de Cahors, 46100 Figeac",        phone: "05 65 50 02 14", hours: "Lun–Sam 8h30–20h",   prods: "Gamme complète",            lat: 44.60653, lng: 2.01368 },
   // Épiceries / fromagers
-  { id: "entre-deux",  kind: "epicerie", dept: "15", name: "L'Entre Deux",                              shortName: "L'Entre Deux", town: "Saint-Santin-de-Maurs", addr: "Le Bourg, 15600 Saint-Santin-de-Maurs",                   phone: "04 71 49 30 02", hours: "Tlj sauf lun. 8h–12h30", prods: "Gamme complète",        lat: 44.6815, lng: 2.2410 },
-  { id: "ginisty",     kind: "epicerie", dept: "12", name: "Boucherie Maison Ginisty",                  shortName: "Ginisty",    town: "Rodez",                   addr: "Place du Bourg, 12000 Rodez",                              phone: "05 65 68 16 64", hours: "Mar–Sam 8h–19h",    prods: "Yaourts & crème crue",      lat: 44.3520, lng: 2.5750 },
-  { id: "morin",       kind: "epicerie", dept: "12", name: "Morin Fromager",                            shortName: "Morin",      town: "Rodez",                   addr: "R. Béteille, 12000 Rodez",                                 phone: "05 65 67 28 11", hours: "Mar–Sam 8h30–19h",  prods: "Crème crue",                lat: 44.3490, lng: 2.5780 },
+  { id: "entre-deux",  kind: "epicerie", dept: "15", name: "L'Entre Deux",                              shortName: "L'Entre Deux", town: "Saint-Santin-de-Maurs", addr: "Le Bourg, 15600 Saint-Santin-de-Maurs",                   phone: "04 71 49 30 02", hours: "Tlj sauf lun. 8h–12h30", prods: "Gamme complète",        lat: 44.65076, lng: 2.21652 },
+  { id: "ginisty",     kind: "epicerie", dept: "12", name: "Boucherie Maison Ginisty",                  shortName: "Ginisty",    town: "Rodez",                   addr: "Place du Bourg, 12000 Rodez",                              phone: "05 65 68 16 64", hours: "Mar–Sam 8h–19h",    prods: "Yaourts & crème crue",      lat: 44.34876, lng: 2.57576 },
+  { id: "morin",       kind: "epicerie", dept: "12", name: "Morin Fromager",                            shortName: "Morin",      town: "Rodez",                   addr: "R. Béteille, 12000 Rodez",                                 phone: "05 65 67 28 11", hours: "Mar–Sam 8h30–19h",  prods: "Crème crue",                lat: 44.35262, lng: 2.57289 },
   // Halles de l'Aveyron
-  { id: "halles-rodez",   kind: "halles", dept: "12", name: "Les Halles de l'Aveyron — Rodez",                 shortName: "Rodez",   town: "Rodez",               addr: "Rte d'Espalion, 12000 Rodez",                            phone: "05 65 73 75 30", hours: "Tlj 9h–19h",      prods: "Gamme complète", lat: 44.3490, lng: 2.5733 },
-  { id: "halles-issy",    kind: "halles", dept: "92", name: "Les Halles de l'Aveyron — Issy-les-Moulineaux",   shortName: "Issy",    town: "Issy-les-Moulineaux", addr: "Quai du Pdt Roosevelt, 92130 Issy-les-Moulineaux",       phone: "01 47 65 02 18", hours: "Mar–Dim 9h–19h",  prods: "Gamme complète", lat: 48.8244, lng: 2.2706 },
-  { id: "halles-herblay", kind: "halles", dept: "95", name: "Les Halles de l'Aveyron — Herblay",               shortName: "Herblay", town: "Herblay-sur-Seine",  addr: "Rte de Conflans, 95220 Herblay-sur-Seine",               phone: "01 30 40 27 13", hours: "Mar–Dim 9h–19h",  prods: "Gamme complète", lat: 48.9897, lng: 2.1633 },
+  { id: "halles-rodez",   kind: "halles", dept: "12", name: "Les Halles de l'Aveyron — Rodez",                 shortName: "Rodez",   town: "Rodez",               addr: "Rte d'Espalion, 12850 Onet-le-Château",                  phone: "05 65 73 75 30", hours: "Tlj 9h–19h",      prods: "Gamme complète", lat: 44.37137, lng: 2.58916 },
+  { id: "halles-issy",    kind: "halles", dept: "92", name: "Les Halles de l'Aveyron — Issy-les-Moulineaux",   shortName: "Issy",    town: "Issy-les-Moulineaux", addr: "Quai du Pdt Roosevelt, 92130 Issy-les-Moulineaux",       phone: "01 47 65 02 18", hours: "Mar–Dim 9h–19h",  prods: "Gamme complète", lat: 48.82563, lng: 2.27586 },
+  { id: "halles-herblay", kind: "halles", dept: "95", name: "Les Halles de l'Aveyron — Herblay",               shortName: "Herblay", town: "Herblay-sur-Seine",  addr: "Rte de Conflans, 95220 Herblay-sur-Seine",               phone: "01 30 40 27 13", hours: "Mar–Dim 9h–19h",  prods: "Gamme complète", lat: 49.00488, lng: 2.19293 },
   // Marchés
-  { id: "marche-figeac",       kind: "marche", dept: "46", name: "Marché de Figeac",       shortName: "Marché",      town: "Figeac",       addr: "Place Carnot, 46100 Figeac",  phone: "—", hours: "Sam. matin", prods: "Yaourts & crème crue", lat: 44.6076, lng: 2.0344 },
-  { id: "marche-decazeville",  kind: "marche", dept: "12", name: "Marché de Decazeville",  shortName: "Decazeville", town: "Decazeville",  addr: "Place Wilson, 12300 Decazeville", phone: "—", hours: "Mar. matin", prods: "Gamme complète",     lat: 44.5582, lng: 2.2563 },
+  { id: "marche-figeac",       kind: "marche", dept: "46", name: "Marché de Figeac",       shortName: "Marché",      town: "Figeac",       addr: "Place Carnot, 46100 Figeac",  phone: "—", hours: "Sam. matin", prods: "Yaourts & crème crue", lat: 44.60946, lng: 2.03351 },
+  { id: "marche-decazeville",  kind: "marche", dept: "12", name: "Marché de Decazeville",  shortName: "Decazeville", town: "Decazeville",  addr: "Place Wilson, 12300 Decazeville", phone: "—", hours: "Mar. matin", prods: "Gamme complète",     lat: 44.55999, lng: 2.25128 },
 ];
 
 const CAT_META = {
@@ -80,6 +80,7 @@ function createLeafletMap(container, options) {
 
   const map = L.map(container, {
     zoomControl: interactive,
+    fadeAnimation: false,
     attributionControl: false,
     scrollWheelZoom: interactive,
     dragging: interactive,
@@ -89,9 +90,11 @@ function createLeafletMap(container, options) {
     keyboard: false,
   }).setView(initialCenter, zoom);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    subdomains: "abcd",
-    maxZoom: 19,
+  // Tuiles OpenStreetMap France : libellés français à tous les niveaux de zoom
+  // (le relief est aplati en crème via le filtre CSS sur .leaflet-tile-pane).
+  L.tileLayer("https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png", {
+    subdomains: "abc",
+    maxZoom: 20,
   }).addTo(map);
 
   // Marqueur ferme
@@ -110,7 +113,7 @@ function createLeafletMap(container, options) {
     const cls = "osm-pos osm-" + p.kind;
     const icon = L.divIcon({
       className: cls,
-      html: '<span class="dot"></span><span class="lbl">' + (p.shortName || p.name) + '</span>',
+      html: '<span class="dot"></span><span class="lbl">' + p.name + '</span>',
       iconSize: [14, 14],
       iconAnchor: [7, 7],
     });
@@ -119,11 +122,29 @@ function createLeafletMap(container, options) {
     markers[p.id] = { marker, kind: p.kind };
   });
 
-  // Auto-fit bounds
-  const latlngs = [FARM_LATLNG, ...visible.filter(p => p.lat && p.lng).map(p => [p.lat, p.lng])];
-  if (latlngs.length > 1) {
-    const bounds = L.latLngBounds(latlngs);
-    map.fitBounds(bounds, { padding: [40, 40], maxZoom: 10 });
+  // Auto-fit bounds : on cadre le cluster régional (sud-ouest) pour éviter que
+  // les points parisiens dézooment la carte sur une vue France entière.
+  const nearby = visible.filter(p => p.lat && p.lng && ["12", "15", "46"].includes(p.dept));
+  const boundsPts = nearby.length ? nearby : visible.filter(p => p.lat && p.lng);
+  const latlngs = [FARM_LATLNG, ...boundsPts.map(p => [p.lat, p.lng])];
+  const fit = () => {
+    if (latlngs.length > 1) {
+      map.fitBounds(L.latLngBounds(latlngs), { padding: [40, 40], maxZoom: 10 });
+    } else {
+      map.setView(initialCenter, zoom);
+    }
+  };
+  fit();
+
+  // Leaflet mesure son conteneur à l'init ; si la hauteur n'est pas encore
+  // stabilisée, les tuiles ne remplissent qu'un sous-rectangle (carte grise).
+  // On recalcule la taille (et on re-cadre) une fois posé, puis à chaque resize.
+  const ensureSize = () => { map.invalidateSize({ animate: false }); fit(); };
+  setTimeout(ensureSize, 60);
+  setTimeout(ensureSize, 300);
+  if (typeof ResizeObserver !== "undefined") {
+    const ro = new ResizeObserver(() => map.invalidateSize({ animate: false }));
+    ro.observe(container);
   }
 
   return { map, markers };
